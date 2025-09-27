@@ -18,3 +18,5 @@ console.log(`My lucky number doubled is ${luckyNum * 2}`);
 console.log(`I was born in ${new Date().getFullYear() - age}`);
 console.log(`Married Status : ${isMarried ? "Married":"Not Married"}`);
 console.log(`My Hobbies are : ${hobbies.join(", ")}`)
+
+console.log(`${hobbies.length === 1 ? `My Hobby is: ${hobbies[0]}`: `My Hobbies are : ${hobbies.join(", ")}`}`); 
