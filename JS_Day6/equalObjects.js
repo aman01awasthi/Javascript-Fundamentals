@@ -14,5 +14,5 @@ function isEqual(obj1, obj2) {
     return true;
 }
 
-console.log(isEqual({a:1, b:2}, {a:1, b:2})); // true
-console.log(isEqual({a:1, b:2}, {a:1, b:3})); // false
+console.log(isEqual({a:1, b:2}, {a:1, b:2}));
+console.log(isEqual({a:1, b:2}, {a:1, b:3}));
