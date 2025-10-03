@@ -1,33 +1,22 @@
 // Write a function that takes an array of numbers and returns a new array containing only prime numbers.
 
-// let array = [];
-
-// function isPrime(arr){
-//     for(let i = 1; i <= 50; i++){
-//         arr.push(i);
-
-//         if(arr[i] % 2 !== 1){
-            
-//         }
-//     }
-// }
-// console.log(isPrime(array));
-
-function getPrimes(n){
-    let primes = [];
-    for(let i = 2; i <= n; i++){
-        let isPrime = true;
-        for(let j = 2; j <= Math.sqrt(i); j++){
-            if(i % j === 0){
-                isPrime = false;
-                break;
-            }
+function checkPrime(num) {
+    for (let i = 2; i < num; i++) {
+        if (num % i === 0) {
+            return false; // not prime
         }
-        if(isPrime){
+    }
+    return true; // prime
+}
+
+function isPrime(arr) {
+    let primes = [];
+    for (let i = 2; i <= 50; i++) {
+        if (checkPrime(i)) {
             primes.push(i);
         }
     }
     return primes;
 }
 
-console.log(getPrimes(50));
+console.log(isPrime([]));
