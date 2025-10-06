@@ -59,14 +59,11 @@ function checkAnagram() {
   console.log(newAnagram1)
   let response = "";
 
-//   for (let i = 0; i < anagramInput1Val.length; i++) {
     if (newAnagram === newAnagram1) {
       response = anagramInput1Val + " & " + anagramInput2Val + " is Anagram";
     } else {
       response = anagramInput1Val + " & " + anagramInput2Val + " is not Anagram";
-      // break;
     }
-//   }
   console.log(response);
   document.getElementById("anagramOutput").innerText = response;
 }
