@@ -12,11 +12,14 @@ let matrix = [
 ];
 
 console.log(matrix);
+// console.log(matrix[1][2]);
 
-for(let i = 0; i <= matrix.length; i++){
-    let el= 0;
-    for(let j = 0; j = matrix[i]; j++){
-        el += matrix[j][2];
+let el = 0;
+for (let i = 0; i < matrix.length; i++) {
+  for (let j = 0; j < matrix[i].length; j++) {
+    if (i === 1 && j === 2) {
+      el += matrix[i][j];
     }
-    console.log(el);
+  }
 }
+console.log(el);
