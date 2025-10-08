@@ -23,3 +23,12 @@ for (let i = 0; i < matrix.length; i++) {
   }
 }
 console.log(el);
+
+
+for (let i = 0; i < matrix.length; i++) {
+  for (let j = 0; j < matrix[i].length; j++) {
+    el = matrix[i][j];
+    // console.log(el)
+  }
+  console.log(matrix[i].join(" "));
+}
