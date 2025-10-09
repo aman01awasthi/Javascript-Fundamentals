@@ -11,4 +11,4 @@ for (let i = 0; i < array.length; i++) {
     arr.push(array[i][j]);
   }
 }
-console.log(arr)
+console.log(arr);

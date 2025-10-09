@@ -9,12 +9,12 @@ let sum = 0;
 let colSum = 0;
 for (let i = 0; i < matrix.length; i++) {
   for (let j = 0; j < matrix.length; j++) {
-      sum += matrix[i][j];
-      colSum += matrix[j][i];
-    }
-    console.log(`Row ${i + 1} sum:`, sum);
-    sum = 0;
-console.log(`Column ${i + 1} sum:`, colSum);
+    sum += matrix[i][j];
+    colSum += matrix[j][i];
+  }
+  console.log(`Row ${i + 1} sum:`, sum);
+  sum = 0;
+  console.log(`Column ${i + 1} sum:`, colSum);
 
-    colSum = 0;
+  colSum = 0;
 }
