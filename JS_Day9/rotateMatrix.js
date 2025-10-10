@@ -7,11 +7,11 @@ let matrix = [
 
 let newMatrix = [];
 for (let i = 0; i < matrix.length; i++) {
-    let arr = [];
-    for (let j = matrix[i].length - 1; j >= 0; j--) {
-        arr.push(matrix[j][i]);
-    }
-    newMatrix.push(arr);
+  let arr = [];
+  for (let j = matrix[i].length - 1; j >= 0; j--) {
+    arr.push(matrix[j][i]);
+  }
+  newMatrix.push(arr);
 }
 console.log(newMatrix);
 
