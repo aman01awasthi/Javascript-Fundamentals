@@ -4,21 +4,27 @@ let array = [
   [1, 6, 4],
   [8, 2, 7],
 ];
-
-// Row-wise max and min
+// let maxVal = [];
 for (let i = 0; i < array.length; i++) {
-  let maxRow = Math.max(...array[i]);
-  let minRow = Math.min(...array[i]);
-  console.log(`Row ${i} → Max: ${maxRow}, Min: ${minRow}`);
+  let colVals;
+  let maxRowEl = Math.max(...array[i]);
+  let minRowEl = Math.min(...array[i]);
+  console.log(maxRowEl);
+  console.log(minRowEl);
 }
+console.log("Hello")
 
-// Column-wise max and min
-for (let j = 0; j < array[0].length; j++) {
-  let maxCol = -Infinity;
-  let minCol = Infinity;
+for (let j = 0; j < array.length; j++) {
+  let maxColEl = array[0][j];
+  let minColEl = array[0][j];
   for (let i = 0; i < array.length; i++) {
-    if (array[i][j] > maxCol) maxCol = array[i][j];
-    if (array[i][j] < minCol) minCol = array[i][j];
+    if (array[i][j] > maxColEl) {
+      maxColEl = array[i][j];
+    }
+    if (array[i][j] < minColEl) {
+      minColEl = array[i][j];
+    }
   }
-  console.log(`Column ${j} → Max: ${maxCol}, Min: ${minCol}`);
+  console.log(maxColEl);
+  console.log(minColEl);
 }
