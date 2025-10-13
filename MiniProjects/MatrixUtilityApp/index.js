@@ -144,3 +144,53 @@ function sumMatrix() {
 }
 
 
+// Search Matrix
+function searchMatrix() {
+  let display = document.getElementById("matrixDisplay");
+  let table = display.querySelector("table");
+  let searchVal = document.getElementById("searchValue").value;
+
+  if (!table) {
+    alert("Please create a matrix first!");
+    return;
+  }
+
+  if (searchVal === "") {
+    alert("Please enter a number to search!");
+    return;
+  }
+
+  let found = false;
+  let rows = table.rows.length;
+  let cols = table.rows[0].cells.length;
+
+  for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < cols; j++) {
+      table.rows[i].cells[j].style.backgroundColor = "white";
+    }
+  }
+
+  for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < cols; j++) {
+      let value = table.rows[i].cells[j].querySelector("input").value;
+      if (value === searchVal) {
+        found = true;
+        table.rows[i].cells[j].style.backgroundColor = "yellow";
+      }
+    }
+  }
+
+  let resultDiv = document.getElementById("resultDisplay");
+  if (!resultDiv) {
+    resultDiv = document.createElement("div");
+    resultDiv.id = "resultDisplay";
+    resultDiv.classList.add("mt-3", "fw-bold", "text-center");
+    display.parentNode.appendChild(resultDiv);
+  }
+
+  if (found) {
+    resultDiv.innerHTML = `🔍 Value <strong>${searchVal}</strong> found and highlighted in matrix.`;
+  } else {
+    resultDiv.innerHTML = `❌ Value <strong>${searchVal}</strong> not found in matrix.`;
+  }
+}
