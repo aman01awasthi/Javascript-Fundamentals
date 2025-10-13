@@ -6,19 +6,16 @@ function createMatrix() {
   let display = document.getElementById("matrixDisplay");
   display.innerHTML = "";
 
-  // Validation
   if (isNaN(rowVal) || isNaN(colVal) || rowVal <= 0 || colVal <= 0) {
     alert("Please enter valid rows and columns!");
     return;
   }
 
-  // Reset matrix
   gridTable = [];
 
   let table = document.createElement("table");
   table.classList.add("table", "table-bordered", "table-sm", "mx-auto");
 
-  // Build table
   for (let i = 0; i < rowVal; i++) {
     let arrRow = [];
     let tr = document.createElement("tr");
@@ -26,7 +23,6 @@ function createMatrix() {
     for (let j = 0; j < colVal; j++) {
       let td = document.createElement("td");
 
-      // Create input for each cell
       let input = document.createElement("input");
       input.type = "number";
       input.value = 0;
@@ -63,7 +59,6 @@ function transposeMatrix() {
     return;
   }
 
-  // Read matrix from input fields
   let rows = table.rows.length;
   let cols = table.rows[0].cells.length;
   gridTable = [];
@@ -91,7 +86,6 @@ function transposeMatrix() {
 
   console.log("Transposed Matrix:", transposed);
 
-  // Display transposed matrix
   display.innerHTML = "";
   let newTable = document.createElement("table");
   newTable.classList.add("table", "table-bordered", "table-sm", "mx-auto");
@@ -111,7 +105,42 @@ function transposeMatrix() {
   }
 
   display.appendChild(newTable);
-  gridTable = transposed; // Update global matrix
+  gridTable = transposed;
+}
+
+
+// Sum of Matrix
+function sumMatrix() {
+  let display = document.getElementById("matrixDisplay");
+  let table = display.querySelector("table");
+
+  if (!table) {
+    alert("Please create a matrix first!");
+    return;
+  }
+
+  let rows = table.rows.length;
+  let cols = table.rows[0].cells.length;
+  let totalSum = 0;
+
+  for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < cols; j++) {
+      let value = parseFloat(table.rows[i].cells[j].querySelector("input").value);
+      totalSum += isNaN(value) ? 0 : value;
+    }
+  }
+
+  console.log("Total Sum:", totalSum);
+
+  let resultDiv = document.getElementById("resultDisplay");
+  if (!resultDiv) {
+    resultDiv = document.createElement("div");
+    resultDiv.id = "resultDisplay";
+    resultDiv.classList.add("mt-3", "fw-bold", "text-center");
+    display.parentNode.appendChild(resultDiv);
+  }
+
+  resultDiv.innerHTML = `🧮 Total Sum of Matrix Elements = <strong>${totalSum}</strong>`;
 }
 
 
