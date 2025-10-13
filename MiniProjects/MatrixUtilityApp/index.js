@@ -194,3 +194,48 @@ function searchMatrix() {
     resultDiv.innerHTML = `❌ Value <strong>${searchVal}</strong> not found in matrix.`;
   }
 }
+
+
+// Find Min or Max
+function findMinMax() {
+  let display = document.getElementById("matrixDisplay");
+  let table = display.querySelector("table");
+
+  if (!table) {
+    alert("Please create a matrix first!");
+    return;
+  }
+
+  let rows = table.rows.length;
+  let cols = table.rows[0].cells.length;
+  let values = [];
+
+  for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < cols; j++) {
+      let inputVal = table.rows[i].cells[j].querySelector("input").value;
+
+      if (inputVal !== "") {
+        values.push(Number(inputVal));
+      }
+    }
+  }
+
+  if (values.length === 0) {
+    alert("Please fill some values in the matrix first!");
+    return;
+  }
+
+  let min = Math.min(...values);
+  let max = Math.max(...values);
+
+  // Show result
+  let resultDiv = document.getElementById("resultDisplay");
+  if (!resultDiv) {
+    resultDiv = document.createElement("div");
+    resultDiv.id = "resultDisplay";
+    resultDiv.classList.add("mt-3", "fw-bold", "text-center");
+    display.parentNode.appendChild(resultDiv);
+  }
+
+  resultDiv.innerHTML = `📊 <strong>Min:</strong> ${min} &nbsp;&nbsp; | &nbsp;&nbsp; <strong>Max:</strong> ${max}`;
+}
