@@ -228,7 +228,6 @@ function findMinMax() {
   let min = Math.min(...values);
   let max = Math.max(...values);
 
-  // Show result
   let resultDiv = document.getElementById("resultDisplay");
   if (!resultDiv) {
     resultDiv = document.createElement("div");
@@ -239,3 +238,8 @@ function findMinMax() {
 
   resultDiv.innerHTML = `📊 <strong>Min:</strong> ${min} &nbsp;&nbsp; | &nbsp;&nbsp; <strong>Max:</strong> ${max}`;
 }
+
+
+document.getElementById("sumBtn").addEventListener("click", sumMatrix);
+document.getElementById("searchBtn").addEventListener("click", searchMatrix);
+document.getElementById("minMaxBtn").addEventListener("click", findMinMax);
