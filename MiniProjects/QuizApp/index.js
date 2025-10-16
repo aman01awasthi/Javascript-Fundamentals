@@ -4,6 +4,31 @@ let questions = [
     options: ["Language", "Framework", "Library", "None"],
     correct: "Language",
   },
+  {
+    question: "Which keyword is used to declare a variable in JavaScript?",
+    options: ["var", "int", "string", "declare"],
+    correct: "var",
+  },
+  {
+    question: "Which symbol is used for single-line comments in JavaScript?",
+    options: ["//", "/*", "#", "<!--"],
+    correct: "//",
+  },
+  {
+    question: "Which method is used to print something to the console?",
+    options: ["print()", "console.log()", "log()", "display()"],
+    correct: "console.log()",
+  },
+  {
+    question: "What does the '===' operator check?",
+    options: [
+      "Only value",
+      "Only type",
+      "Both value and type",
+      "None of these",
+    ],
+    correct: "Both value and type",
+  },
 ];
 
 let currentQuestion = 0;
@@ -42,7 +67,14 @@ function quizApp() {
       scoreArea.innerText = selectedVal + " Wrong Answer!!!";
       scoreArea.classList.add("false");
     }
+
+    if (currentQuestion < questions.length){
+      currentQuestion++;
+      selectedVal = "";
+      quizApp();
+    }
   });
+  
 }
 
 quizApp();
