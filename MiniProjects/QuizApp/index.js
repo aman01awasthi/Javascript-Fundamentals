@@ -32,49 +32,77 @@ let questions = [
 ];
 
 let currentQuestion = 0;
+let score = 5;
+let total = 0;
+let selectedVal = "";
+
+const scoreArea = document.querySelector(".scoreArea");
+const submitBtn = document.getElementById("submitBtn");
+
 function quizApp() {
+  // Reset message
+  scoreArea.innerText = "";
+
   let question = questions[currentQuestion];
-  let options = question.options;
-  let correct = question.correct;
   document.querySelector(".questionContainer").innerText = question.question;
+
   let optionArea = document.querySelector(".optionArea");
   optionArea.innerHTML = "";
-  let selectedVal;
-  for (let i = 0; i < options.length; i++) {
+
+  // Render options
+  question.options.forEach((opt) => {
     let button = document.createElement("button");
-    button.textContent = options[i];
-    button.classList.add("btn", "btn-outline-primary");
+    button.textContent = opt;
+    button.classList.add("btn", "btn-outline-primary", "m-2");
     optionArea.appendChild(button);
-    button.classList.remove("selected");
+
     button.addEventListener("click", function () {
-      const allBtn = document.querySelectorAll(".optionArea button");
-      for (let button of allBtn) {
-        button.classList.remove("selected");
-      }
+      document
+        .querySelectorAll(".optionArea button")
+        .forEach((btn) => btn.classList.remove("selected"));
       this.classList.add("selected");
       selectedVal = this.textContent;
     });
+  });
+}
+
+// ✅ Single submit listener (not duplicated)
+submitBtn.addEventListener("click", function () {
+  let scoreArea = document.querySelector(".scoreArea");
+  scoreArea.classList.remove("true", "false");
+
+  // get current question and correct answer here
+  let question = questions[currentQuestion];
+  let correct = question.correct;
+
+  if (!selectedVal) {
+    scoreArea.innerText = "⚠️ Please select an option!";
+    scoreArea.classList.add("false");
+    return;
   }
 
-  let submitBtn = document.getElementById("submitBtn");
-  submitBtn.addEventListener("click", function () {
-    let scoreArea = document.querySelector(".scoreArea");
-    scoreArea.classList.remove("true", "false");
-    if (selectedVal == correct) {
-      scoreArea.innerText = selectedVal + " Correct Answer!!!  Got 5 points";
-      scoreArea.classList.add("true");
-    } else {
-      scoreArea.innerText = selectedVal + " Wrong Answer!!!";
-      scoreArea.classList.add("false");
-    }
+  if (selectedVal === correct) {
+    scoreArea.innerText =
+      selectedVal + " ✅ Correct Answer! Got " + score + " points";
+    scoreArea.classList.add("true");
+    total += score;
+  } else {
+    scoreArea.innerText = selectedVal + " ❌ Wrong Answer!";
+    scoreArea.classList.add("false");
+  }
 
-    if (currentQuestion < questions.length){
-      currentQuestion++;
-      selectedVal = "";
+  // wait 1 second before loading next question
+  setTimeout(() => {
+    currentQuestion++;
+    if (currentQuestion < questions.length) {
       quizApp();
+    } else {
+      document.querySelector(".questionContainer").innerText = "";
+      document.querySelector(".optionArea").innerHTML = "";
+      document.querySelector(".totalScore").innerText =
+        "🎯 Quiz Over! Total Score: " + total;
     }
-  });
-  
-}
+  }, 1000);
+});
 
 quizApp();
