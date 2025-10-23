@@ -1,0 +1,11 @@
+.calculator{
+    width: 100%;
+    text-align: center;
+}
+.buttonDiv{
+    width: 100%;
+    text-align: -webkit-center;
+}
+.allButtons{
+    width: 200px;
+}
