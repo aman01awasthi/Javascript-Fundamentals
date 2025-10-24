@@ -1,7 +1,4 @@
-let displayVal = document.getElementById("calcDisplay");
-displayVal.addEventListener("input", function () {
-  console.log(displayVal.value);
-});
+let inputVal = document.getElementById("calcDisplay");
 const buttonValues = [
   "C",
   "%",
@@ -22,6 +19,7 @@ const buttonValues = [
   ".",
   "=",
 ];
+let displayVal = "";
 let allButtons = document.querySelector(".allButtons");
 allButtons.innerHTML = "";
 for (let i = 0; i < buttonValues.length; i++) {
@@ -29,4 +27,13 @@ for (let i = 0; i < buttonValues.length; i++) {
   button.textContent = buttonValues[i];
   button.classList.add("btn", "btn-outline-primary", "m-1");
   allButtons.appendChild(button);
+  button.addEventListener("click", function () {
+    if (this.textContent === "C") {
+      inputVal.value = "";
+    } else {
+      inputVal.value = displayVal;
+      console.log(displayVal);
+    }
+    displayVal += this.textContent;
+  });
 }
