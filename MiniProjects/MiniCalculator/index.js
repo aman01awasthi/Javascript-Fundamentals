@@ -28,12 +28,13 @@ for (let i = 0; i < buttonValues.length; i++) {
   button.classList.add("btn", "btn-outline-primary", "m-1");
   allButtons.appendChild(button);
   button.addEventListener("click", function () {
+    displayVal += this.textContent;
     if (this.textContent === "C") {
       inputVal.value = "";
+      displayVal = "";
     } else {
       inputVal.value = displayVal;
       console.log(displayVal);
     }
-    displayVal += this.textContent;
   });
 }
