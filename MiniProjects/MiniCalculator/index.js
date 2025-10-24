@@ -22,6 +22,7 @@ const buttonValues = [
 let displayVal = "";
 let allButtons = document.querySelector(".allButtons");
 allButtons.innerHTML = "";
+let res = 0;
 for (let i = 0; i < buttonValues.length; i++) {
   let button = document.createElement("button");
   button.textContent = buttonValues[i];
@@ -32,6 +33,13 @@ for (let i = 0; i < buttonValues.length; i++) {
     if (this.textContent === "C") {
       inputVal.value = "";
       displayVal = "";
+    } else if (this.textContent === "=") {
+      // inputVal.value = "";
+      res = eval(displayVal);
+      inputVal.value = res;
+      displayVal = res.toString();
+      // displayVal = "";
+      // inputVal.value = res;
     } else {
       inputVal.value = displayVal;
       console.log(displayVal);
